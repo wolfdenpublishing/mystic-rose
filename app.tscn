@@ -1,0 +1,270 @@
+[gd_scene load_steps=7 format=3 uid="uid://jcx63cnhjpjx"]
+
+[ext_resource type="Script" path="res://app.gd" id="1_u58ob"]
+[ext_resource type="Texture2D" uid="uid://nk3ok5jflf5o" path="res://pixels/purple.png" id="2_3ubfl"]
+[ext_resource type="Texture2D" uid="uid://cfdhrqnmkrni5" path="res://pixels/orange.png" id="3_g4tfh"]
+[ext_resource type="Shader" path="res://circle.gdshader" id="4_ufs04"]
+[ext_resource type="Texture2D" uid="uid://b2ydfk4p8jg01" path="res://pixels/transparent.png" id="5_prbpj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adw0d"]
+shader = ExtResource("4_ufs04")
+shader_parameter/size = null
+shader_parameter/edge_softness = 0.01
+shader_parameter/color = null
+
+[node name="App" type="Node2D"]
+script = ExtResource("1_u58ob")
+
+[node name="Timers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Canvas" type="Node2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="Bounds" type="Sprite2D" parent="CanvasLayer/Canvas"]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("2_3ubfl")
+
+[node name="Test" type="Sprite2D" parent="CanvasLayer/Canvas"]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_g4tfh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Canvas"]
+material = SubResource("ShaderMaterial_adw0d")
+scale = Vector2(2, 2)
+texture = ExtResource("5_prbpj")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UIContainer" type="MarginContainer" parent="UILayer"]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UIContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StartPointsLabel" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Starting Points"
+
+[node name="StartPoints" type="SpinBox" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 5.0
+max_value = 20.0
+value = 5.0
+rounded = true
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Setup Colors"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorBkgd" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Background"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorEdge" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Edges"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorVertex" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0.552941, 0.552941, 0.921569, 1)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Vertices"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorSearch" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer8"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0.953287, 0.227383, 0.536139, 1)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "Search"
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Slow Mo (msec)"
+
+[node name="SlowMo" type="SpinBox" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1000.0
+step = 10.0
+
+[node name="HSeparator4" type="HSeparator" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ColorsLabel2" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Rose (Triangle) Colors"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Color3Pt" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0, 1, 0, 0.25098)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "3 Orig Pts"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Color2Pt" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(1, 0, 0, 0.12549)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "2 Orig Pts"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Color1Pt" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0, 0, 1, 0.0627451)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "1 Orig Pts"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Color0Pt" type="ColorPickerButton" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "      "
+color = Color(0.431373, 0.0431373, 0.443137, 0.690196)
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+text = "0 Orig Pts"
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UIContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UILayer/UIContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UIContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PlayButton" type="Button" parent="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Play"
+
+[node name="RecolorButton" type="Button" parent="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+disabled = true
+text = "Recolor"
+
+[node name="RandColorButton" type="Button" parent="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+disabled = true
+text = "Random"
+
+[node name="ResetButton" type="Button" parent="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Reset"
+
+[node name="MarginContainer2" type="MarginContainer" parent="UILayer/UIContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/UIContainer/VBoxContainer"]
+layout_mode = 2
+text = "Log"
+
+[node name="LogText" type="TextEdit" parent="UILayer/UIContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[connection signal="pressed" from="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2/RecolorButton" to="." method="_on_recolor_button_pressed"]
+[connection signal="pressed" from="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2/RandColorButton" to="." method="_on_rand_color_pressed"]
+[connection signal="pressed" from="UILayer/UIContainer/VBoxContainer/CenterContainer/HBoxContainer2/ResetButton" to="." method="_on_reset_button_pressed"]
